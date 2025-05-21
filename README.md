@@ -18,19 +18,13 @@ Cuối ngày, tất cả giao dịch sẽ được thống kê như sau:
 - Thống kê theo ngày, tháng và năm.  
 
 Tất cả thông tin thống kê này sẽ được trực quan hóa qua công cụ hoặc hệ thống chuyên biệt.
-## Thông tin nhóm
-- Trần Thị Kim Trinh - 21120580
-- Đinh Hoàng Trung - 21120582
-- Nguyễn Thủy Uyên - 21120590
-
 
 ## Data Source
-
+[Transaction-Credit card.csv](https://studenthcmusedu-my.sharepoint.com/:x:/g/personal/21120590_student_hcmus_edu_vn/ERYHCH5TKlhOhXNosy2-LAsBxtVyrlFuTWHYnC8xhzlu6A?e=WDbK5M)
 
 ## Technical Requirements
-
 ### Prerequisites
-- JDK (Java Development Kit)
+- JDK (Java Development Kit)(jdk1.8.0)
 - Apache Kafka (https://kafka.apache.org/downloads)(https://kafka.apache.org/quickstart)
 - Hadoop
 - Apache Spark, PySpark
@@ -39,21 +33,19 @@ Tất cả thông tin thống kê này sẽ được trực quan hóa qua công 
 
 ### Setup Instructions
 
+[Run Kafka tutorial](https://studenthcmusedu-my.sharepoint.com/:b:/r/personal/pmtu_mso_hcmus_edu_vn/Documents/VNU-HCMUS/Courses/X%E1%BB%AD%20l%C3%BD%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20tr%E1%BB%B1c%20tuy%E1%BA%BFn/TH/pdf/TH%20%232%20-%20CSC17106%20%E2%80%93%20XLDLTT%20-%20Kafka.pdf?csf=1&web=1&e=tn1IDs)
+[Run Hadoop tutorial for windown](https://studenthcmusedu-my.sharepoint.com/:b:/r/personal/pmtu_mso_hcmus_edu_vn/Documents/VNU-HCMUS/Courses/X%E1%BB%AD%20l%C3%BD%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20tr%E1%BB%B1c%20tuy%E1%BA%BFn/TH/pdf/TH%20%233%20-%20CSC17106%20%E2%80%93%20XLDLTT%20-%20Hadoop.pdf?csf=1&web=1&e=Kq36Vp)
+[Airflow](https://studenthcmusedu-my.sharepoint.com/:b:/r/personal/pmtu_mso_hcmus_edu_vn/Documents/VNU-HCMUS/Courses/X%E1%BB%AD%20l%C3%BD%20ph%C3%A2n%20t%C3%ADch%20d%E1%BB%AF%20li%E1%BB%87u%20tr%E1%BB%B1c%20tuy%E1%BA%BFn/TH/pdf/TH%20%237%20-%20CSC17106%20%E2%80%93%20XLDLTT%20-%20Air%20Flow.pdf?csf=1&web=1&e=heQXxd)
 
-## Chức năng và 
-1. 
-
+## Chức năng và yêu cầu phân tích
+1. Chức năng
+   - Kafka đọc dữ liệu csv từng dòng và gửi thông tin này đến topic định nghĩa trước theo chu kì thời gian ngẫu nhiên trong phạm vi từ 1s đến 3s. 
+   - Spark streaming đọc dữ liệu từ kafka theo thời gian thực, nghĩa là bất cứ thông tin nào từ kafka được xử lý tức thì, các xử lý bao gồm lọc dữ liệu, biến đổi thông tin, tính toán dữ liệu. 
+   - Hadoop để lưu trữ các thông tin được xử lý từ Spark và là nơi lưu trữ thông tin được xử lý để có thể trực quan hóa dữ liệu và thống kê ở giai đoạn sau. 
+   - Streamlit đọc dữ liệu từ Hadoop (dạng csv), thống kê dữ liệu theo mô tả bài toán và hiển thị dữ liệu một cách trực quan.  
+   - Air Flow lên lịch quá trình đọc và hiển thị dữ liệu từ Power PI sao cho dữ liệu luôn được update mỗi ngày. 
 2. Key Reports
-   - State-wise AQI trends
-   - Quarterly analysis
-   - Air quality category distribution
-   - Regional comparisons
-   - Special focus on Hawaii, Alaska, Illinois, and Delaware
-
-3. Data Mining
-   - Predictive models for future air quality
-   - Pattern analysis and trending
-   - Seasonal variations study
+   - Thống kê dữ liệu theo mô tả bài toán và hiển thị dữ liệu một cách trực quan.  
 
 ## Project Timeline
 - Project Start: 
@@ -61,28 +53,12 @@ Tất cả thông tin thống kê này sẽ được trực quan hóa qua công 
 - Final Submission: 
 - Final Q&A: 
 
-## Documentation
-- Technical documentation is available in `/docs/`
-- Presentation video (10 minutes) available in `/docs/presentations/`
-- Full analysis report in `/docs/reports/`
 
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## References
-1. [Air Quality Index - Wikipedia](https://en.wikipedia.org/wiki/Air_quality_index)
-2. [US Counties Database](https://simplemaps.com/data/us-counties)
-3. [EPA AirData Documentation](https://www.epa.gov/outdoor-air-quality-data)
 
 ## License
-This project is created for educational purposes as part of the CSC12107 – Information System for Business Intelligence course at University of Science - VNUHCM.
+This project is created for educational purposes as part of the CSC17106 – Online Data Processing and Analysis course at University of Science - VNUHCM.
 
 ## Acknowledgments
 - Course Instructors:
-  - Hồ Thị Hoàng Vy (hthvy@fit.hcmus.edu.vn)
-  - Tiết Gia Hồng (tghong@fit.hcmus.edu.vn)
-  - Nguyễn Ngọc Minh Châu (nnmchau@fit.hcmus.edu.vn) 
+  - Teacher: Nguyễn Trần Minh thư
+  - Teacher: Phạm Minh Tú
